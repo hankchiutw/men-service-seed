@@ -15,7 +15,7 @@ const extend = require('util')._extend;
 
 class Schema extends BaseSchema {
     constructor(){
-        const options = {
+        const fields = {
             username: { type: String, required: true, unique: true},
             password: { type: String, required: true},  // bcrypt
             nickname: { type: String},
@@ -30,7 +30,7 @@ class Schema extends BaseSchema {
             lastLoggedAt: { type: Date},
             roles: [{ type: String, enum: [ 'resident', 'distributor', 'company', 'admin' ], default: 'resident'}]
         };
-        super(options);
+        super(fields);
 
         let schema = this;
 

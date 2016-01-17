@@ -4,40 +4,27 @@
  * Dependencies
  */
 
-const mongoose = require('mongoose');
+const BaseSchema = require('app/models/BaseSchema');
+const ObjectId = BaseSchema.Types.ObjectId;
 
 /**
- * User schema
+ * Session schema
  */
 
-const schema = new mongoose.Schema({
-    user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
-    expiredAt: { type: Date, default: () => Date.now()+86400*30*1000 },   // 1 month
-    disabled: { type: Boolean, default: false },
-    createdAt: { type: Date, default: Date.now },
-    updatedAt: Date
-});
+class Schema extends BaseSchema {
+    constructor(){
+        const fields = {
+            user: { type: ObjectId, required: true, ref: 'User' },
+            expiredAt: { type: Date, default: () => Date.now()+86400*30*1000 },   // 1 month
+        };
+        super(fields);
+    }
+}
 
-schema.virtual('objectId').get(function(){ return this._id;});
-schema.set('toJSON', {virtuals: true});
-
-/**
- * pre-save hook
- */
-
-schema.pre("save", function(next){
-    this.updatedAt = Date.now();
-    this.markModified("updatedAt");
-    next();
-});
-
-/**
- * Validations
- */
 
 /**
  * Register
  */
 
 const modelName = __filename.substring(__filename.lastIndexOf("/")+1, __filename.lastIndexOf("."));
-module.exports = mongoose.model(modelName, schema, modelName);
+module.exports = new Schema().registerModel(modelName);

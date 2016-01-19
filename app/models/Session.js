@@ -4,27 +4,25 @@
  * Dependencies
  */
 
-const BaseSchema = require('app/models/BaseSchema');
-const ObjectId = BaseSchema.Types.ObjectId;
+const extend = require('util')._extend;
 
 /**
  * Session schema
  */
 
-class Schema extends BaseSchema {
-    constructor(){
-        const fields = {
-            user: { type: ObjectId, required: true, ref: 'User' },
-            expiredAt: { type: Date, default: () => Date.now()+86400*30*1000 },   // 1 month
-        };
-        super(fields);
-    }
-}
+const Schema = require('app/models/SessionSchema');
+const schema = new Schema();
 
+/**
+ * Models instance methods
+ */
+
+schema.methods = extend( schema.methods, {
+})
 
 /**
  * Register
  */
 
 const modelName = __filename.substring(__filename.lastIndexOf("/")+1, __filename.lastIndexOf("."));
-module.exports = new Schema().registerModel(modelName);
+module.exports = schema.registerModel(modelName);

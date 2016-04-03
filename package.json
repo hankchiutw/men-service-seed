@@ -1,31 +1,17 @@
 {
-  "name": "node-express-mongoose-seed",
-  "version": "1.0.0",
-  "description": "platform server",
+  "name": "men-service-seed",
+  "version": "0.1.0",
+  "description": "service-manner seed project using mongoose, express.js, node.js",
   "main": "app.js",
   "directories": {
     "doc": "docs"
   },
-  "apidoc": {
-    "name": "node-express-mongoose-seed",
-    "version": "0.0.1",
-    "description": "API documentation",
-    "title": "API documentation",
-    "header": {
-      "title": "Guide",
-      "filename": "app/docs/apidoc_header.md"
-    },
-    "template": {
-      "withCompare": false,
-      "forceLanguage": "en"
-    }
-  },
   "repository": {
     "type": "git",
-    "url": "git@github.com:kwela/node-express-mongoose-seed.git"
+    "url": "git@github.com:hankchiutw/men-service-seed.git"
   },
   "config": {
-    "appname": "node-express-mongoose-seed",
+    "appname": "men-service-seed",
     "host_prod": "api-test",
     "host_beta": "api-test",
     "host_test": "api-test"
@@ -58,31 +44,27 @@
     "restart:test": "ssh -t deploy@$npm_package_config_host_test \"pm2 restart $npm_package_config_appname-test\""
   },
   "keywords": [
-    "api"
+    "mongoose",
+    "express.js",
+    "node.js"
   ],
   "author": "Hank",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^0.8.5",
     "body-parser": "^1.14.1",
+    "chai": "^3.5.0",
     "co": "^4.6.0",
+    "co-nextware": "^1.0.1",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
-    "kerberos": "0.0.17",
-    "lwip": "0.0.8",
+    "fs-readdir-recursive": "^1.0.0",
+    "mocha": "^2.4.5",
+    "mocha-generators": "^1.2.0",
     "mongoose": "^4.3.4",
+    "mongoose-extend": "^0.1.1",
     "morgan": "^1.6.1",
-    "multer": "^1.1.0",
-    "node-mime": "^1.0.0",
-    "parse": "^1.6.9",
     "passport": "^0.3.2",
-    "passport-http-bearer": "^1.0.1",
-    "request-promise": "^1.0.2"
+    "passport-http-bearer": "^1.0.1"
   },
-  "devDependencies": {
-    "assert": "^1.3.0",
-    "co": "^4.6.0",
-    "should": "^7.1.1",
-    "supertest": "^1.1.0"
-  }
+  "devDependencies": {}
 }

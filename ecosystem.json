@@ -1,11 +1,11 @@
 {
   "apps" : [
     {
-      "name": "node-express-mongoose-seed-"+process.env.NODE_ENV || 'dev',
+      "name": "men-service-seed-"+process.env.NODE_ENV || 'dev',
       "script": "app.js",
       "node_args": "--harmony",
-      "watch": ['app', 'config', 'lib', 'app.js', '*.json'],
-      "ignore_watch": ["[\\/\\\\]\\./", "node_modules", './**/*.spec.js', './**/.*', '*.log'],
+      "watch": ["services", "config", "lib", "app.js", "*.json"],
+      "ignore_watch": ["[\\/\\\\]\\./", "node_modules", "./**/.*", "*.log"],
       "env": {
         "NODE_PATH": "."
       }
@@ -16,24 +16,24 @@
       "user": "deploy",
       "host": "api-test",
       "ref": "origin/prod",
-      "repo": "git@github.com:kwela/node-express-mongoose-seed.git",
-      "path": "/var/app/node-express-mongoose-seed/prod",
+      "repo": "git@github.com:hankchiutw/men-service-seed.git",
+      "path": "/var/app/men-service-seed/prod",
       "post-deploy": "npm install; npm run doc ; NODE_ENV=prod pm2 startOrRestart ecosystem.json"
     },
     "beta": {
       "user": "deploy",
       "host": "api-test",
       "ref": "origin/beta",
-      "repo": "git@github.com:kwela/node-express-mongoose-seed.git",
-      "path": "/var/app/node-express-mongoose-seed/beta",
+      "repo": "git@github.com:hankchiutw/men-service-seed.git",
+      "path": "/var/app/men-service-seed/beta",
       "post-deploy": "npm install; npm run doc ; NODE_ENV=beta pm2 startOrRestart ecosystem.json"
     },
     "test": {
       "user": "deploy",
       "host": "api-test",
       "ref": "origin/test",
-      "repo": "git@github.com:kwela/node-express-mongoose-seed.git",
-      "path": "/var/app/node-express-mongoose-seed/test",
+      "repo": "git@github.com:hankchiutw/men-service-seed.git",
+      "path": "/var/app/men-service-seed/test",
       "post-deploy": "npm install; npm run doc ; NODE_ENV=test pm2 startOrRestart ecosystem.json"
     }
   }

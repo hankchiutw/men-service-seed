@@ -1,18 +1,14 @@
 'use strict';
 
-/**
- * Dependencies
- */
-
-const _co = require('lib/_co');
+const cn = require('co-nextware');
 const BearerStrategy = require('passport-http-bearer').Strategy;
-const Session = require('app/models/Session');
+const Session = require('../../app/models/Session');
 
 /**
  * Expose
  */
 
-module.exports = new BearerStrategy(_co(check));
+module.exports = new BearerStrategy(cn(check));
 
 /**
  * Implements

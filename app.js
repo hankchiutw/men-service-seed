@@ -1,40 +1,22 @@
 'use strict';
 
+let ctx = {
+    config: require('./config/config'),
+    app: {},
+    db: {},
+    getServiceConfig: function(name){ return ctx.config.services[name]; },
+    services: {}
+};
+
+ctx.services.main = require('./services/main/')(ctx);
+
+ctx.app = ctx.services.main.app;
+ctx.db = ctx.services.main.db;
+
 /**
- * Dependencies
+ * include more services
  */
 
-const express = require('express');
-const config = require('config/config');
-const auth = require('config/auth');
+ctx.services.auth = require('./services/auth')(ctx);
 
-const app = express();
-
-/**
- * Bootstrap
- */
-
-require('config/express')(app);
-require('config/routes')(app, auth);
-
-require('config/db')().on('open', boot);
-
-function boot(){
-    let portInit = process.env.PORT || config.port;
-    (function boot(){
-        let port = portInit;
-        portInit++;
-
-        app.listen(port, function(){
-            console.log('config:', config);
-            console.log('NODE_ENV:', process.env.NODE_ENV);
-            console.log('Express app started on port:', port);
-        }).on('error', function(err){
-            if(err.code == 'EADDRINUSE'){
-                console.log('****** EADDRINUSE, find next');
-                boot();
-            }
-        });
-
-    })();
-}
+require('./test-runner');

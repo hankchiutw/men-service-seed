@@ -1,11 +1,6 @@
 'use strict';
 
-/**
- * Dependencies
- */
-
-const config = require('config/config');
-const fail = require('config/middlewares/res').fail;
+const fail = require('./res').fail;
 
 /**
  * Expose
@@ -14,8 +9,8 @@ const fail = require('config/middlewares/res').fail;
 exports.clientErrorHandler = function (err, req, res, next) {
     res.fail = fail;
 
-    if(err.code === 'LIMIT_FILE_SIZE')
-        res.fail('File too large. Maximum '+config.maxFileSize+' bytes.');
+//    if(err.code === 'LIMIT_FILE_SIZE')
+//        res.fail('File too large. Maximum '+config.maxFileSize+' bytes.');
 
 //    logger.error('clientErrorHandler:', err);
     if(res.headersSent) return next(err);

@@ -58,5 +58,6 @@ public/lib
 public/uploads
 # test/
 *.log
+modules
 
 # env setup

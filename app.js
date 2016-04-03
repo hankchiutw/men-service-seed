@@ -1,5 +1,6 @@
 'use strict';
 
+/** context object across all services */
 let ctx = {
     config: require('./config/config'),
     app: {},
@@ -8,6 +9,7 @@ let ctx = {
     services: {}
 };
 
+/** boot main service */
 ctx.services.main = require('./services/main/')(ctx);
 
 ctx.app = ctx.services.main.app;

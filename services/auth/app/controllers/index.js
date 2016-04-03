@@ -22,10 +22,11 @@ module.exports = {
  */
 
 function *login(req, res, next){
-    let aUser = yield User.findOne({ username: req.body.username }).exec();
+    logger.info('login params:', req.body);
+    let aUser = yield User.findOne({ username: req.body.username }).select('+password').exec();
 
     if(!aUser) return next(logger.E('user not existed', 404));
-    if(!aUser.comparePassword(req.body.password)) return next(logger.E('password wrong'));
+    if(!aUser.validatePassword(req.body.password)) return next(logger.E('password wrong'));
 
     let aSession = yield Session.create({user: aUser});
     logger.info('Login success:', aSession);

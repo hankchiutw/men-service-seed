@@ -5,7 +5,7 @@
       "script": "app.js",
       "node_args": "--harmony",
       "watch": ["services", "config", "lib", "app.js", "*.json"],
-      "ignore_watch": ["[\\/\\\\]\\./", "node_modules", "./**/.*", "*.log"],
+      "ignore_watch": ["[\\/\\\\]\\./", "node_modules", "*.log"],
       "env": {
         "NODE_PATH": "."
       }

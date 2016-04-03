@@ -6,6 +6,7 @@ const mocha = new Mocha();
 const read = require('fs-readdir-recursive');
 
 addDir('./services/main/app/models');
+addDir('./test');
 
 mocha.run();
 

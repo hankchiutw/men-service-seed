@@ -3,7 +3,7 @@
 require('mocha-generators').install();
 
 const apiUrl = require('config/config').publicApiUrl;
-const api = require('modules/chai-api/')(apiUrl);
+const api = require('chai-api')(apiUrl);
 const mock = require('./mock');
 
 describe('>> auth service routes', function(){

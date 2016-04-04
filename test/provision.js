@@ -2,7 +2,7 @@
 
 require('mocha-generators').install();
 
-const db = require('modules/chai-mongo/');
+const db = require('chai-mongo');
 const mock = require('./mock');
 
 const User = mongoose.model('User');
